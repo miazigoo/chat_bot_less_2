@@ -19,11 +19,12 @@ def echo(event, vk_api):
         event.user_id,
         event.text
     )
-    vk_api.messages.send(
-        user_id=event.user_id,
-        message=answer_text,
-        random_id=random.randint(1, 1000)
-    )
+    if answer_text:
+        vk_api.messages.send(
+            user_id=event.user_id,
+            message=answer_text,
+            random_id=random.randint(1, 1000)
+        )
 
 
 if __name__ == "__main__":

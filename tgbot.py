@@ -32,7 +32,8 @@ async def echo_message(msg: types.Message):
         msg.from_user.id,
         msg.text
     )
-    await bot.send_message(msg.from_user.id, answer_text)
+    if answer_text:
+        await bot.send_message(msg.from_user.id, answer_text)
 
 
 async def main():

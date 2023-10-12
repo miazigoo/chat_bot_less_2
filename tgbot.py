@@ -3,7 +3,7 @@ import asyncio
 from aiogram.filters import Command
 from environs import Env
 
-from flow_utils import detect_intent_texts
+from flow_utils import detect_intent_texts_tg
 
 env = Env()
 env.read_env()
@@ -27,7 +27,7 @@ async def process_help_command(message: types.Message):
 
 @dp.message(F.text)
 async def echo_message(msg: types.Message):
-    answer_text = detect_intent_texts(
+    answer_text = detect_intent_texts_tg(
         PROJECT_ID,
         msg.from_user.id,
         msg.text

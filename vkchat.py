@@ -4,7 +4,7 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 import random
 import vk_api as vk
 
-from flow_utils import detect_intent_texts
+from flow_utils import detect_intent_texts_vk
 
 env = Env()
 env.read_env()
@@ -14,7 +14,7 @@ PROJECT_ID = env.str("PROJECT_ID")
 
 
 def echo(event, vk_api):
-    answer_text = detect_intent_texts(
+    answer_text = detect_intent_texts_vk(
         PROJECT_ID,
         event.user_id,
         event.text

@@ -2,3 +2,4 @@ aiogram~=3.1.1
 environs~=9.5.0
 google-cloud-dialogflow
 vk_api~=11.9.9
+telepot~=12.7

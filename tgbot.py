@@ -1,9 +1,14 @@
+import logging
+
+import telepot
 from aiogram import Bot, types, Dispatcher, F
 import asyncio
 from aiogram.filters import Command
 from environs import Env
 
-from flow_utils import detect_intent_texts_tg
+from utils import detect_intent_texts_tg, TelegramLogsHandler
+
+logger = logging.getLogger(__name__)
 
 env = Env()
 env.read_env()
@@ -41,4 +46,14 @@ async def main():
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    logging.basicConfig(
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.ERROR
+    )
+    admin_id = env.str('TELEGRAM_ADMIN_ID')
+    telegram_bot = telepot.Bot(TGTOKEN)
+    while True:
+        try:
+            asyncio.run(main())
+        except Exception as e:
+            logger.addHandler(TelegramLogsHandler(telegram_bot, admin_id))
+            logger.exception(e)

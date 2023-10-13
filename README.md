@@ -1,9 +1,10 @@
 # Bot для ...
 
-Бот позволяет ...
-
+Бот позволяет автоматически отвечать на сообщения юзеров
+![Снимок экрана от 2023-10-12 20-29-32](https://github.com/miazigoo/chat_bot_less_2/assets/55626306/44d98253-df15-4254-b89c-df0f34849af9)
 
 ### Как установить
+
 
 * Скачать [этот script](https://github.com/miazigoo/chat_bot_less_2.git)
 

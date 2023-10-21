@@ -39,7 +39,7 @@ def main():
         description='Программа загружает вопросы, ответы и создает intent для бота в DialogFlow'
     )
     parser.add_argument(
-        'mypath',
+        'path',
         help='Путь к файлу с вопросами-ответами в *.json формате'
     )
     args = parser.parse_args()
@@ -50,13 +50,12 @@ def main():
 
     questions = json.loads(questions)
 
-    for intent_name in questions.keys():
-        intent = questions[intent_name]
+    for intent_name, question in questions.items():
         create_intent(
             env.str("PROJECT_ID"),
             intent_name,
-            intent['questions'],
-            [intent['answer']],
+            question['questions'],
+            [question['answer']],
         )
 
 

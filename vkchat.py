@@ -14,15 +14,15 @@ logger = logging.getLogger(__name__)
 
 
 def send_answer(event, vk_api, project_id):
-    _, answer_text = detect_intent_texts(
+    answer_text = detect_intent_texts(
         project_id,
         event.user_id,
         event.text
     )
-    if answer_text:
+    if not answer_text.intent.is_fallback:
         vk_api.messages.send(
             user_id=event.user_id,
-            message=answer_text,
+            message=answer_text.fulfillment_text,
             random_id=random.randint(1, 1000)
         )
 
